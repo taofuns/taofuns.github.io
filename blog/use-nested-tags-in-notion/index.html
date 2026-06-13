@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Tao" href="https://taofuns.life/rss.xml"><link rel="canonical" href="https://taofuns.life/blog/use-nested-tags-in-notion/"><title>Use nested tags in Notion · Tao</title><meta name="title" content="Use nested tags in Notion · Tao"><meta name="description" content="Notion 本质上不是一款笔记软件，但是用 Notion 可以搭建出适合自己的笔记软件"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://taofuns.life/blog/use-nested-tags-in-notion/"><meta property="og:title" content="Use nested tags in Notion · Tao"><meta property="og:description" content="Notion 本质上不是一款笔记软件，但是用 Notion 可以搭建出适合自己的笔记软件"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Use nested tags in Notion · Tao"><meta name="twitter:description" content="Notion 本质上不是一款笔记软件，但是用 Notion 可以搭建出适合自己的笔记软件"><!-- Set theme before paint to avoid a flash of the wrong theme --><script>
+  const stored = localStorage.getItem('theme');
+  if (stored === 'light' || stored === 'dark') {
+    document.documentElement.dataset.theme = stored;
+  }
+</script><link rel="stylesheet" href="/_astro/_slug_.Bd7DlCBu.css"></head> <body> <header class="site-header"> <div class="container"> <a href="/" class="brand">Tao</a> <nav> <a href="/"> Home </a><a href="/blog" aria-current="page"> Writing </a><a href="/projects"> Projects </a><a href="/about"> About </a> <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme"> <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <circle cx="12" cy="12" r="5"></circle> <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path> </svg> </button> <script>
+  (() => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const current =
+        root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script> </nav> </div> </header> <main> <div class="container">  <article> <a href="/blog" class="back-link">← All writing</a> <header class="post-header"> <h1>Use nested tags in Notion</h1> <div class="post-meta"> <time datetime="2024-05-12T00:00:00.000Z"> May 12, 2024 </time>  <div class="tags"> <span class="tag">note</span><span class="tag">notion</span> </div> </div> </header> <div class="prose">  <p>#notion #post</p>
+<p>💡 Notion 本质上不是一款笔记软件，但是用 Notion 可以搭建出适合自己的笔记软件。</p>
+<p>因为之前常使用的某款主力笔记软件很不争气，所以开始尝试寻找替代，最终选择了 Notion。</p>
+<p>但在使用 Notion 进行笔记管理的时候总觉得不太方便，之前我会使用标签对笔记进行分类，但 Notion 没有多级标签的功能，随着笔记的增多，会使得标签爆炸，对笔记进行导航或者搜索都不太方便。</p>
+<p>网上搜索了一下也没找到好的解决方案，给 Notion 官方发邮件对方也没回我。经过一番摸索，我找到了一种几乎解决了我全部需求的方案，也加深了对 Notion 的理解，分享出来抛转引玉。</p>
+<h2 id="实现效果">实现效果</h2>
+<ol>
+<li>自定义标签墙，可以层级化展现标签，也能够将常用标签设置为快捷方式</li>
+</ol>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141244336.png" alt="Untitled"></p>
+<ol>
+<li>标签具备父子逻辑关系，可以显示子标签下的笔记，具备 Notion 中页面的所有功能</li>
+</ol>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141244468.png" alt="Untitled"></p>
+<ol>
+<li>在笔记页面可以一键跳转到标签页，并支持在笔记内容里内联标签</li>
+</ol>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141244035.png" alt="Untitled"></p>
+<h2 id="一要解决的问题">一、要解决的问题</h2>
+<p>因为记录的内容很多，如果不分类的话，查找和整理起来都不方便。我希望在一个地方可以看到笔记库的分类，能轻松导航到分类下的笔记，并且能够将常用分类设置为快捷方式。</p>
+<p>传统年代大家用文件夹对笔记分类，但这种树状结构无法解决笔记与文件夹间多对多的关系。比如我针对「卡片笔记写作法」这本书写一篇读书笔记，它既属于「读书笔记」这个分类，也属于「笔记方法」这个分类，而给这篇笔记打上这两个标签就能解决这个分类问题，<strong>所以我需要标签</strong>。</p>
+<p>但随着标签的增多，笔记本里面的标签难免遇到标签爆炸的问题，上百个标签摆在那儿并不能解决查找的问题。不同标签的权重也是不一样的，并且实际上标签之间是有逻辑关系的，比如「笔记方法」这个标签可以包含在「知识管理」这个标签下，「知识管理」这个标签下还可能包括「阅读方法」，当我筛选「知识管理」的时候，我希望在我的笔记既可以看到有关笔记方法的内容，也能看到有关阅读方法的内容，<strong>所以我需要多级标签。</strong></p>
+<p>但很多笔记软件的多级标签体系用的是树状结构，比如「商业/公司/苹果」这样树状的分类，这就又重蹈了前文提到的文件夹式分类解决不了多对多关系的问题，因为同样的标签「苹果」可能还可以被分类为「科技/数码/苹果」，<strong>所以我需要可以实现多对多关系的多级标签。</strong></p>
+<p>另外用标签分类的对象不应该仅仅是笔记这个粒度，有时候笔记内容比较长，而只有某个部分与标签内容有关，如果把这个标签打在了笔记这个粒度查找起来也不方便，<strong>所以我希望能实现行内标签。</strong></p>
+<p>那么 Notion 能实现 <strong>兼具行内标签能力的多对多关系的多级标签</strong> 么？</p>
+<h2 id="二notion-的特点">二、Notion 的特点</h2>
+<p>因为之前工作的时候经常用 Confulence，我刚开始接触 Notion 的时候也是把它当做具有块结构的 Confulence 来用，通过页面的树状结构来实现内容分类，但当我深入了解 Notion 的数据库功能后，打开了新世界。</p>
+<p>Notion 的数据库建立在页面之上，是页面的集合，数据库里面的每个条目都可以是一个页面，而有了数据库，就可以针对页面进行个性化的配置，为其增添各式各样的属性，比如增加一个标签属性，就可以为笔记添加多个标签了，也可以通过数据库提供的各种视图进行笔记列表不同维度的展现。</p>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141245765.png" alt="Untitled"></p>
+<p>只是这样还不能实现我们前文提到的「兼具行内标签能力的多对多关系的多级标签**」**，因为上面这个数据库里的标签之间没有逻辑关系，筛选起来要逐个勾选，且只能把标签打在单条笔记上。</p>
+<p>幸运的是 Notion 的数据库还可以实现不同数据库之间的关联，通过数据库属性类型中的 Relation 和 Rollup 能解锁更多的可能性，配合上多种多样的视图能力，完全可以用 Notion 来搭建简单的应用，像是「低代码平台」的感觉，这也是实现后文解决方案的基础。</p>
+<p>下面的解决方案应用了数据库的多项能力，所以你可能需要对数据库中的 Relation、Rollup、Formula、Template 这些概念有一定了解，可以阅读官方对于数据库的指南了解一二。</p>
+<p><a href="https://www.notion.so/help/category/databases">Databases - Notion Help Center</a></p>
+<h2 id="三当前的解决方案">三、当前的解决方案</h2>
+<p>为了实现「兼具行内标签能力的多对多关系的多级标签」，我把「笔记」和「标签」拆分成两个数据库，具体分为三步来实现。</p>
+<h3 id="step1-建立标签数据库tagbase-demo">Step：1 建立标签数据库「TagBase-Demo」</h3>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141245572.png" alt="Untitled"></p>
+<p>数据库的各个属性如上图所示，下面简单介绍下其中几个属性的设置：</p>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141245556.png" alt="Untitled"></p>
+<p>1 ） 数据库中建立一个名为「子标签」属性，类型设置为 Relation，将 Related to 指向数据库自身，对应的数据库会自动生成「父标签」这个属性，父子标签间为多对多关系，随之再建立一个「下级子标签」属性，设置为 Rollup 类型，指向子标签的子标签，于是便可以索引到标签的下级子标签，比如#知识管理/笔记方法/双向链接，对于标签#知识管理**，子标签是**#笔记方法**，其下级子标签是**#双向链接**；</p>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141247163.png" alt="Untitled"></p>
+<p>2）上级父标签就是父标签的父标签，例如对于**#领域/个人成长/知识管理/笔记方法/双向链接，<strong>对于标签</strong>#知识管理**，父标签是**#个人成长**，其上级父标签是**#领域。**获取上级父标签的形态与获取下级子标签略有不同，为了实现通过标签筛选子标签下笔记的能力，需要尽可能深得对标签进行父级标签回溯，而受限于目前 Notion 的 Formula 公式能力，只能追溯两层（即父标签和上级父标签），并且在使用过程中有一些问题，这里要稍微处理一下，先把父标签转换为文本格式，然后再 Rollup 为上级父标签，最后将父标签与上级父标签合并为一个集合以供后续笔记筛选。</p>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141244336.png" alt="Untitled"></p>
+<p>3）到此标签数据库已经建立完了，你可以通过新建一个页面，插入各种面向标签数据库视图，以你想要的方式展现标签，比如我在标签的属性「类型」中设置了一个「Star」的值，选中即代表为常用标签，显示为画廊视图，方便点击。另外还有一个标签数，按照一级、二级、三级罗列出所有标签，虽然用处不大，但是看着就是心安。</p>
+<h3 id="step2-建立笔记数据库notebase-demo">Step：2 建立笔记数据库「NoteBase-Demo」</h3>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141246236.png" alt="Untitled"></p>
+<p>数据库的各个属性如上图所示，下面简单介绍下其中几个属性的设置：</p>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141245912.png" alt="Untitled"></p>
+<p>1）在数据库中建立一个名为「子标签」的属性，关联到标签数据库「TagBase-Demo」，勾选上在「Show on TagBase-Demo」，创建后会在标签数据库中新建一个叫做「Include」的属性，表示该标签包含了某条笔记，后续可以用这个属性来查看标签下的关联笔记（不包含该标签子标签下的笔记）；</p>
+<p>2）在数据库中建立一个名为「TagParents」的属性，通过 Rollup 指向标签的「上级父标签 + 父标签」的父标签集合属性（因为没法 Rollup 另一个数据库里面的 Rollup 属性，所以之前才把标签的上级父标签转成了文本属性，只是为了多索引一层）；</p>
+<p>3）在数据库中建立一个名为「ExpandTags」的属性，通过 Formula 将笔记的「Tags」和「上级父标签 + 父标签」组合成一个更大的集合，用于后续的标签索引，这样就可以筛选到标签下的子标签和下级子标签的笔记</p>
+<h3 id="step3-通过标签索引笔记">Step：3 通过标签索引笔记</h3>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141246845.png" alt="Untitled"></p>
+<p>1）在对应的标签页面建立一个指向笔记数据库的视图，通过笔记的「ExpandTags」就可以筛选标签下的笔记，这个笔记列表包括子标签和下级子标签内的笔记，目前还不能查看三级及以后的子标签，不过日常使用基本够了；</p>
+<p>2）可以在笔记中通过@标签名称实现内联标签，这样的笔记可以在页面的反向链接中查询。但目前作为反向链接显示的笔记只能列出来显示，不能进行如同（1）中视图进行各种筛选和排序操作，这也是没有完全依赖反向链接实现标签功能的原因；</p>
+<p>3）如果仅想查看当前标签下的笔记，不想看子标签下的内容，除了更改（1）中的筛选方式外，还可以直接通过标签的「Include」属性查看</p>
+<p>如果为每一个标签都建立（1）中视图会比较繁琐，可以为标签数据库设置一个默认模版，提前设置好筛选条件，后续新建的标签都会自带笔记列表视图，已经创建的标签点击进去后点一下模版也会按照新的模版自动更新页面。</p>
+<p><img src="https://obsidian-1305666858.cos.ap-nanjing.myqcloud.com/202212141246136.png" alt="Untitled"></p>
+<p>细心的你可能发现上图的列表多设置了一个按照 Tags 筛选的条件，这也是目前方案的一个局限，因为作为模版无法提前设置「ExpandTags」对应的值（至少，目前我还没找到对应的方法），所以我就先默认让列表显示仅包含该标签的笔记（不包含标签下子标签的笔记），如果想要显示子标签下的笔记需要手动将「ExpandTags」对应的文本#NewTag 替换成实际的标签名称，因为对于同个标签只需要操作一次，所以这里的局限性尚可接受，如果你有更好的方法，请留言告诉我。</p>
+<h2 id="结语">结语</h2>
+<p>标签是分类的一种方式，分类的目的并不是让笔记变得规整，而是让笔记更容易被发现，为笔记的流动提供空间。</p>
+<p>很多人把笔记视作「第二大脑」，但往往只是用到了笔记的存储能力，笔记记下来了就搁置在那儿了，并没有真正把记下来的所思所想和当前的所思所想以及未来的所思所想连接起来。这也是为什么自 2020 年以来「双链笔记」这个概念火起来的原因。</p>
+<p>如果大脑比作计算机，作为第二大脑的笔记，它不应该只是增强这个计算机的硬盘空间，而更应该扩容内存空间，让我们在思考的时候可以连接更多的材料，连接过去，连接现在，连接未来。</p>  </div> </article>  </div> </main> <footer class="site-footer"> <div class="container"> <span>© 2026 Lei Tao</span> <nav> <a href="https://github.com/taofuns" rel="me"> GitHub </a><a href="mailto:hi.leontao@gmail.com" rel="me"> Email </a> <a href="/rss.xml">RSS</a> </nav> </div> </footer> </body></html>

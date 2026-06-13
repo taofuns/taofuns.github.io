@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Tao" href="https://taofuns.life/rss.xml"><link rel="canonical" href="https://taofuns.life/projects/"><title>Projects · Tao</title><meta name="title" content="Projects · Tao"><meta name="description" content="Things I'm building."><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://taofuns.life/projects/"><meta property="og:title" content="Projects · Tao"><meta property="og:description" content="Things I'm building."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Projects · Tao"><meta name="twitter:description" content="Things I'm building."><!-- Set theme before paint to avoid a flash of the wrong theme --><script>
+  const stored = localStorage.getItem('theme');
+  if (stored === 'light' || stored === 'dark') {
+    document.documentElement.dataset.theme = stored;
+  }
+</script><link rel="stylesheet" href="/_astro/_slug_.Bd7DlCBu.css"></head> <body> <header class="site-header"> <div class="container"> <a href="/" class="brand">Tao</a> <nav> <a href="/"> Home </a><a href="/blog"> Writing </a><a href="/projects" aria-current="page"> Projects </a><a href="/about"> About </a> <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme"> <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <circle cx="12" cy="12" r="5"></circle> <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path> </svg> </button> <script>
+  (() => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const current =
+        root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script> </nav> </div> </header> <main> <div class="container">  <h1>Projects</h1> <p style="color: var(--text-muted)">A few things I'm building or have built.</p> <div class="project-grid"> <a class="project-card" href="https://www.dopace.me"> <h3>Dopace</h3> <p>A paced system for doing, tracking, and growing.</p> </a> </div>  </div> </main> <footer class="site-footer"> <div class="container"> <span>© 2026 Lei Tao</span> <nav> <a href="https://github.com/taofuns" rel="me"> GitHub </a><a href="mailto:hi.leontao@gmail.com" rel="me"> Email </a> <a href="/rss.xml">RSS</a> </nav> </div> </footer> </body></html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taofuns.life/sitemap-index.xml

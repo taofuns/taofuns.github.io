@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Tao" href="https://taofuns.life/rss.xml"><link rel="canonical" href="https://taofuns.life/"><title>Tao</title><meta name="title" content="Tao"><meta name="description" content="Notes on building, thinking, and the things I make."><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://taofuns.life/"><meta property="og:title" content="Tao"><meta property="og:description" content="Notes on building, thinking, and the things I make."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Tao"><meta name="twitter:description" content="Notes on building, thinking, and the things I make."><!-- Set theme before paint to avoid a flash of the wrong theme --><script>
+  const stored = localStorage.getItem('theme');
+  if (stored === 'light' || stored === 'dark') {
+    document.documentElement.dataset.theme = stored;
+  }
+</script><link rel="stylesheet" href="/_astro/_slug_.Bd7DlCBu.css"></head> <body> <header class="site-header"> <div class="container"> <a href="/" class="brand">Tao</a> <nav> <a href="/" aria-current="page"> Home </a><a href="/blog"> Writing </a><a href="/projects"> Projects </a><a href="/about"> About </a> <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme"> <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <circle cx="12" cy="12" r="5"></circle> <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path> </svg> </button> <script>
+  (() => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const current =
+        root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script> </nav> </div> </header> <main> <div class="container">  <section class="intro"> <h1>Hi, I'm Lei Tao.</h1> <p>
+I build software and write about the process — products I'm making,
+      ideas I'm chewing on, and the occasional rabbit hole. Welcome.
+</p> </section> <section> <p class="section-label">Recent writing</p> <ul class="post-list"> <li> <a href="/blog/hello-world/"> <span class="post-title">Hello, world</span> <span class="post-date"> <time datetime="2026-06-13T00:00:00.000Z"> Jun 13, 2026 </time> </span> </a> </li><li> <a href="/blog/from-zettelkasten-to-obsidian-essence-methods-and-tools/"> <span class="post-title">From Zettelkasten to Obsidian essence, methods and tools</span> <span class="post-date"> <time datetime="2024-06-01T00:00:00.000Z"> Jun 1, 2024 </time> </span> </a> </li><li> <a href="/blog/use-nested-tags-in-notion/"> <span class="post-title">Use nested tags in Notion</span> <span class="post-date"> <time datetime="2024-05-12T00:00:00.000Z"> May 12, 2024 </time> </span> </a> </li><li> <a href="/blog/brief-discussion-on-human-computer-interaction/"> <span class="post-title">Brief discussion on human-computer interaction</span> <span class="post-date"> <time datetime="2024-05-01T00:00:00.000Z"> May 1, 2024 </time> </span> </a> </li> </ul>  </section>  </div> </main> <footer class="site-footer"> <div class="container"> <span>© 2026 Lei Tao</span> <nav> <a href="https://github.com/taofuns" rel="me"> GitHub </a><a href="mailto:hi.leontao@gmail.com" rel="me"> Email </a> <a href="/rss.xml">RSS</a> </nav> </div> </footer> </body></html>
